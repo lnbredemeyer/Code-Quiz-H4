@@ -20,6 +20,12 @@
 * WHEN the game is over
 * THEN initials and my score can be saved
 
+## Correct Answers
+
+* Cheer Athletics
+* Purple
+* Milan
+* Reign
 
 - Screenshot:
 
