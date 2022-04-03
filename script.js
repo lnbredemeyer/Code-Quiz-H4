@@ -1,3 +1,4 @@
+//an array of questions to be asked, the choices given, and the answers
 var questions = [
     {
         question: "What allstar gym has teams that are types of felines?",
@@ -27,17 +28,18 @@ var timer = document.querySelector("#timer");
 var countdown = questions.length * 15; 
 var countdownInt;
 var questionIndex = 0;
+var initialsInput = document.querySelector("#initial")
+var initialButton = document.querySelector("#initial-submit");
+var initials = localStorage.getItem("#initial");
+var score = localStorage.getItem("#final-score");
 
-function endGame(){
-    quizContains.innerHTML = "Game Over!";
-    clearInterval(countdownInt);
-}
-
+//startTime begins countdown on timer
 function startTime(){
     countdown--;
     timer.textContent = countdown;
 }
 
+//generateQuestion -- makes the questions show up
 function generateQuestion(){
 
     if(questionIndex === questions.length){
@@ -56,8 +58,11 @@ function generateQuestion(){
 
     quizContains.append(quizQuestion);
     quizContains.append(answerList);
+
+    return;
 }
 
+//checkAnswer -- checks to see if the question is correct, shows "You're Right", or You're Wrong
 function checkAnswer(event){
     var currentAnswer = event.target.textContent;
     var goodAnswer = document.createElement("p");
@@ -74,12 +79,46 @@ function checkAnswer(event){
     quizContains.innerHTML ="";
     questionIndex++;
     generateQuestion();
+
+    return;
 }
 
-function startquiz(){
+//startQuiz -- starts the quiz
+function startQuiz(){
     generateQuestion();
     countdownInt = setInterval(startTime, 1000);
 }
 
-quizBtn.addEventListener("click", startquiz);
+//endGame function, shows "Game Over!" when all questions are answered
+function endGame(){
+    quizContains.innerHTML = "Game Over!";
+    clearInterval(countdownInt);
+    $("form").show();
+
+    var endScore = textContent();
+    endScore.textContent = countdown;
+    localStorage.setItem("#final-score", endScore);
+    return;
+}
+
+//initialButton function, when submitting initials, creates an alert
+initialButton.addEventListener("click", function(event){
+    event.preventDefault();
+
+    var initial = document.querySelector("#initial").value;
+
+    if (initial === "") {
+        alert("Cannot be blank");
+    } else {
+        alert("Thanks for playing");
+    }
+
+    localStorage.setItem("#initial", initial);
+    clearInterval(interval);
+
+    return;
+});
+
+//Listener events that start with a click
+quizBtn.addEventListener("click", startQuiz);
 quizContains.addEventListener("click", checkAnswer);

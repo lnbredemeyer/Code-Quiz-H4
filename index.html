@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Quiz</title>
+    <!-- <link to css stylesheet> -->
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Quiz Challenge</title>
 </head>
 <body>
-    <main>
-        <button type="button" id="quizbtn" class="btn btn-prime mt-4">
-            Start Quiz
-        </button>
+    <main class="container" mt-4>
+        <div class="content">
+            <h1 class="">Quiz Challenge</h1>
+            <button type="button" id="quizbtn" class="btn btn-primary mt-4">
+                Start Quiz
+            </button>
+        </div>
         <div class="container">
             <p>Timer: <span id="timer"></span></p>
         </div>
-        <div class="contains mt-4" id="quiz-contain"></div>
+        <div class="container mt-4" id="quiz-contain"></div>
+        <form>
+            <div class="form-group">
+              <label for="initials">Input initials: </label>
+              <input type="initials" class="initials" id="initial" aria-describedby="emailHelp">
+            </div>
+            <p hidden>Your final score is <span id="final-score"></span>.</p>
+            <button type="submit" class="btn btn-primary" id="initial-submit">Submit</button>
+          </form>
     </main>
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
